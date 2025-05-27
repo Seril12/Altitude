@@ -1,0 +1,18 @@
+body {
+  background-color: #000000; /* Black background */
+}
+
+.altitude {
+  background-color: #000000;
+  padding: 0.7rem;
+  border-radius: 10px;
+  box-shadow: 0 0 20px 5px rgba(245, 245, 245, 0.8);
+  margin: 20px auto; 
+  display: flex;
+  justify-content: center;
+  max-width: 450px;
+  margin-left: 20px;
+} 
+.altitude :hover {
+  cursor : pointer;
+}
