@@ -1,6 +1,5 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-
 function formatted(totalseconds){
     const hours = Math.floor(totalseconds / 3600);
     const minutes = Math.floor((totalseconds % 3600) / 60);
@@ -14,10 +13,11 @@ const data =[
     {time: 5400, altitude: 22},
     {time: 7200, altitude: 15},
 ];
-
+const latestPoint = data.length > 0 ? data[data.length - 1] : null;
 function Graph(){
     return(
-        <div className = "altitude">
+               <div className = "altitude">
+                
             <LineChart
             width ={500}
             height ={300}
@@ -50,15 +50,28 @@ function Graph(){
                 style ={{fill: "#FFFFFF",
                     fontSize: '14px',
                     fontWeight: 'bold',
-                    fontFamily: 'Arial',
+                    fontFamily: 'Arial', 
                     textAnchor: 'middle',
                 }}
              />
-             <Tooltip
+             <Tooltip className="Tooltip"
              labelFormatter={formatted}
-             contentStyle={{backgroundColor: "white", border:'none'}}
+             contentStyle={{backgroundColor: "white", border : "none" ,}}
              />
             </LineChart>
+                  {latestPoint && (
+        <div
+          style={{
+            color: "red",
+            fontSize: "15spx",
+            fontWeight: "bold",
+            marginTop: "10px",
+            textAlign: "center"
+          }}
+        >
+           Altitude: {latestPoint.altitude.toFixed(2)}m
+        </div>
+      )}
         </div>
     );
 }
